@@ -1,0 +1,19 @@
+<p>Feeder 是一個開放原始碼的閱讀器（支援 RSS/Atom/JSONFeed），開發於 2014 年並運行於 Android 系統</p>
+
+<p>有了 Feeder ，您便能輕易由喜愛的網站上閱覽即時的資訊和貼文</p>
+
+<p>Feeder 並沒有所謂的遠端服務，所以不需要任何的帳號註冊</p>
+
+<p>您可以免費使用 Feeder 並在自已的設備上運行，您的數據百分之百保證私密</p>
+
+<p><b>特點</b></p>
+
+<ul>
+<li>解析 HTML 並在原生 TextView 中顯示</li>
+<li>離線閱讀</li>
+<li>背景同步</li>
+<li>通知功能</li>
+<li>OPML 導入/導出</li>
+<li>方便訪問附件鏈接</li>
+<li>Material design</li>
+</ul>

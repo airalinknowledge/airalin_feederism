@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:installLocation="internalOnly">
+  <!-- Import export feeds -->
+  <uses-permission
+    android:name="android.permission.READ_EXTERNAL_STORAGE"
+    android:maxSdkVersion="28" />
+  <uses-permission
+    android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    android:maxSdkVersion="29" />
+  <!-- For syncing -->
+  <uses-permission android:name="android.permission.INTERNET" />
+  <!-- To limit syncing to only WiFi -->
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+  <!-- For background jobs -->
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.RUN_USER_INITIATED_JOBS" />
+
+  <permission
+    android:name="${applicationId}.permission.read"
+    android:description="@string/permission_read_desc"
+    android:label="@string/permission_read_label" />
+
+  <queries>
+    <!-- So a barcode scanner can be invoked -->
+    <package android:name="com.google.zxing.client.android" />
+    <intent>
+      <action android:name="android.intent.action.TTS_SERVICE" />
+    </intent>
+    <intent>
+      <action android:name="android.intent.action.PROCESS_TEXT" />
+      <data android:mimeType="text/plain" />
+    </intent>
+  </queries>
+
+  <application
+    android:name=".FeederApplication"
+    android:allowBackup="true"
+    android:enableOnBackInvokedCallback="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:localeConfig="@xml/locales_config"
+    android:supportsRtl="true"
+    android:theme="@style/AppThemeDayNoActionBar"
+    android:usesCleartextTraffic="true">
+
+    <meta-data
+      android:name="android.webkit.WebView.MetricsOptOut"
+      android:value="true" />
+
+    <activity
+      android:name="com.nononsenseapps.feeder.ui.MainActivity"
+      android:exported="true"
+      android:label="@string/app_name"
+      android:launchMode="singleTop">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+
+      <!-- This filter MUST look like this for Android to automatically open these links -->
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+        <data android:host="feederapp.nononsenseapps.com" />
+      </intent-filter>
+
+      <meta-data
+        android:name="android.app.shortcuts"
+        android:resource="@xml/shortcuts" />
+    </activity>
+
+    <activity
+      android:name=".ui.ManageSettingsActivity"
+      android:exported="true"
+      android:parentActivityName=".ui.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".ui.ImportOPMLFileActivity"
+      android:exported="true"
+      android:excludeFromRecents="true"
+      android:label="@string/import_feeds_from_opml"
+      android:theme="@style/AppThemeDialog"
+      android:parentActivityName=".ui.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="content" />
+        <data android:host="*" />
+
+        <data android:mimeType="text/xml" />
+        <data android:mimeType="application/xml" />
+        <data android:mimeType="text/x-opml" />
+        <data android:mimeType="application/octet-stream" />
+      </intent-filter>
+    </activity>
+
+    <activity
+      android:name=".ui.AddFeedFromShareActivity"
+      android:exported="true"
+      android:parentActivityName=".ui.MainActivity">
+      <!-- URLs with feed mimetype can be opened -->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+
+        <data android:mimeType="text/xml" />
+        <data android:mimeType="application/rss+xml" />
+        <data android:mimeType="application/atom+xml" />
+        <data android:mimeType="application/xml" />
+        <data android:mimeType="application/json" />
+      </intent-filter>
+      <!-- Any other URL can be shared with the app -->
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+        <data android:host="*" />
+      </intent-filter>
+      <!-- Also possible to share pure text -->
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:mimeType="text/plain" />
+      </intent-filter>
+    </activity>
+
+    <!-- Receiver for notification cancellations and such -->
+    <receiver android:name=".model.RssNotificationBroadcastReceiver" />
+
+    <activity
+      android:name=".ui.OpenLinkInDefaultActivity"
+      android:exported="true"
+      android:label="@string/open_link_in_browser"
+      android:launchMode="singleInstance"
+      android:taskAffinity="${applicationId}.OpenLinkTask" />
+
+    <!-- Service for background jobs -->
+    <service
+      android:name=".background.FeederJobService"
+      android:permission="android.permission.BIND_JOB_SERVICE" />
+
+  </application>
+</manifest>

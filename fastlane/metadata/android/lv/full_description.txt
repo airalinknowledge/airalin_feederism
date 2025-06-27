@@ -1,0 +1,21 @@
+<p>Feeder — atvērtā pirmkoda ziņu plūsmas lasītājs (RSS/Atom/JSONFeed) Android ierīcēm, kas tapa 2014. gadā.</p>
+
+<p>Ar Feeder jūs variet sekot savām iecienītāko vietņu jaunākajām ziņām un rakstiem.</p>
+
+<p>Feeder NEIZMANTO nekādus attālinātos serverus un pakalpojumus, lai atsvaidzinātu ziņu plūsmas, tāpēc nav nepieciešama nekāda konta reģistrācija.</p>
+
+<p>Feeder ir pieejams bez maksas, un darbojas tikai jūsu ierīcē. Jūsu dati ir 100% drošībā.</p>
+
+<p><b>Funkcionalitāte</b></p>
+
+<ul>
+<li>Parsē HTML un parāda to sākotnējā teksta skatā</li>
+<li>Iespēja lasīt bezsaistē</li>
+<li>Fona ziņu plūsmas atsvaidzināšana</li>
+<li>Paziņojumi</li>
+<li>Iespēja ievietot/izgūt ziņu plūsmas, izmantojot OPML</li>
+<li>Ērta piekļuve ielīmētajām saitēm</li>
+<li>Material dizains</li>
+</ul>
+
+Pilnais izmaiņu žurnāls pieejams <a href="https://github.com/spacecowboy/Feeder/blob/master/CHANGELOG.md">GitHub</a>.

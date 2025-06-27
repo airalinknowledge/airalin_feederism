@@ -1,0 +1,21 @@
+<p>Feeder er en open source feed-læser (RSS/Atom/JSONFeed) til Android skabt i 2014.</p>
+
+<p>Med Feeder kan du læse de seneste nyheder og indlæg fra dine yndlingssider.</p>
+
+<p>Feeder synkroniserer IKKE med sædvanlige eksterne backends, så det er ikke nødvendigt med nogen form for kontoregistrering.</p>
+
+<p>Feeder er gratis at bruge og kører lokalt på din enhed. Dine data er 100% private.</p>
+
+<p><b>Funktioner</b></p>
+
+<ul>
+<li>Fortolker HTML og viser det i et indbygget TextView</li>
+<li>Offline læsning</li>
+<li>Synkronisering i baggrunden</li>
+<li>Notifikationer</li>
+<li>OPML Import/ekport</li>
+<li>Praktisk adgang til indkapslingslinks</li>
+<li>Material design</li>
+</ul>
+
+Fuld ændringslog er tilgængelig <a href="https://github.com/spacecowboy/Feeder/blob/master/CHANGELOG.md">on GitHub</a>.
