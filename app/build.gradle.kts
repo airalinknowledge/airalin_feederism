@@ -8,24 +8,9 @@ plugins {
     alias(libs.plugins.ktlint.gradle)
 }
 
-val commitCount by project.extra {
-    providers
-        .exec {
-            commandLine("git", "rev-list", "--count", "HEAD")
-        }.standardOutput.asText
-        .get()
-        .trim()
-        .toInt()
-}
-
-val latestTag by project.extra {
-    providers
-        .exec {
-            commandLine("git", "describe")
-        }.standardOutput.asText
-        .get()
-        .trim()
-}
+// 使用固定值替代Git命令，避免Git错误
+val commitCount by project.extra { 3720 }
+val latestTag by project.extra { "v2.12.1" }
 
 android {
     namespace = "com.nononsenseapps.feeder"
@@ -210,7 +195,7 @@ composeCompiler {
 }
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(11) // 改为11，兼容性更好
     compilerOptions {
         allWarningsAsErrors = false
     }

@@ -1,5 +1,6 @@
 package com.nononsenseapps.feeder.ui.compose.feed
 
+import androidx.compose.material.icons.filled.Map
 import android.content.Intent
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -771,6 +772,22 @@ fun FeedScreen(
                                 },
                                 text = {
                                     Text(stringResource(id = R.string.add_feed))
+                                },
+                            )
+                            DropdownMenuItem(
+                                onClick = {
+                                    onShowToolbarMenu(false)
+                                    // 暂时跳转到SearchFeed，稍后在那里实现sitemap功能
+                                    onAddFeed()
+                                },
+                                leadingIcon = {
+                                    Icon(
+                                        Icons.Default.Map,
+                                        contentDescription = null,
+                                    )
+                                },
+                                text = {
+                                    Text("尝试Sitemap")
                                 },
                             )
                             DropdownMenuItem(
