@@ -1,65 +1,49 @@
-Feeder
-=====
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y44OYQL)
+# Feederism
 
-<a href="https://f-droid.org/repository/browse/?fdid=com.nononsenseapps.feeder" target="_blank">
-<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
+**Feederism** is an experimental Android app designed to monitor and parse updates from selected websites — especially event-driven, gallery-based, or calendar-embedded content — and deliver them as readable feed entries with precise time parsing and notification support.
 
-<a href='https://play.google.com/store/apps/details?id=com.nononsenseapps.feeder.play'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height="80"/></a>
+📡 Built with Kotlin, Jetpack Compose, and modern Android architecture components, **Feederism** is a lightweight but powerful tool to "feed" the user timely information from semi-structured or unstructured web content.
 
-<a href="https://hosted.weblate.org/engage/feeder/">
-<img src="https://hosted.weblate.org/widgets/feeder/-/android-strings/svg-badge.svg" alt="Translation status" />
-</a>
+---
 
-### Description
+## ✨ Features
 
-Feeder is an open source feed reader (RSS/Atom/JSONFeed) for Android created in 2014.
+- 🕰️ **Smart Date Extraction**  
+  Extracts date/time info from HTML pages using JSoup + regex heuristics (e.g., "April 5 at 6:30pm", "2025-06-21 至 2025-07-15", etc.)
 
-With Feeder you can read the latest news and posts from your favorite sites.
+- 📬 **Feed Reader Compatibility**  
+  Integrates with RSS-like structures or even non-RSS pages via custom site parsers.
 
-Feeder does NOT sync with usual remote backends so no account registration of any kind is necessary.
+- 📆 **Event Structuring**  
+  Supports exhibition periods, openings, closings, deadlines, and multiple event segments under one article.
 
-Feeder is free to use and runs locally on your device. Your data is 100% private.
+- ⚙️ **Custom Parsers & Filters**  
+  Easily modify or extend `SitemapParser` and `EventSegmentExtractor` to target specific domains (e.g., `howlarts.org`, `smg.sh`).
 
-### License
+- 📱 **Android-Native UI**  
+  Built with Jetpack Compose, Material 3, and navigation components for a clean, responsive user experience.
 
-**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND**
+---
 
-**GPLv3**, for more info see *LICENSE*.
+## 🔧 Tech Stack
 
-### Translations are welcome!
+- **Kotlin + Coroutines**  
+- **Jetpack Compose**  
+- **Android Lifecycle + ViewModel**  
+- **Jsoup** for HTML parsing  
+- **Gradle Kotlin DSL**
 
-If you want to translate Feeder into your native language the easiest way is to go to [Weblate](https://hosted.weblate.org/engage/feeder/) but making a merge request is of course fine if that is something you are comfortable with.
+---
 
-### Quick install
+## 🚧 Roadmap
 
-Clone the project:
+- [ ] Auto-sync + background fetching
+- [ ] Markdown rendering in article body
+- [ ] Notification on new updates
+- [ ] Local calendar integration (.ics)
+- [ ] UI/UX refinement for tablet layout
 
-    git clone --recursive https://github.com/spacecowboy/Feeder.git
+---
 
-Then build and install the app to your phone which is connected via USB:
+## 📁 Folder Structure
 
-    ./gradlew installDebug
-
-### Features
-
-* Offline reading
-* Notification support
-* OPML import/export
-* Material Design
-
-### Screenshots
-
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US_phone_portrait_light_list.png" width=50%/><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US_phone_portrait_dark_list.png" width=50%/>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US_phone_portrait_light_article.png" width=50%/><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4_en-US_phone_portrait_dark_article.png" width=50%/>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5_en-US_phone_portrait_light_settings.png" width=50%/><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6_en-US_phone_portrait_dark_settings.png" width=50%/>
-
-### Download
-
-Feeder is available on [F-Droid](https://f-droid.org/en/packages/com.nononsenseapps.feeder/) and [Google Play](https://play.google.com/store/apps/details?id=com.nononsenseapps.feeder.play) and there are APKs available for download on [GitHub Releases](https://github.com/spacecowboy/Feeder/releases).
-
-The GitHub releases are signed with a key matching this signature:
-
-```
-SHA-256: C5:EE:FF:22:48:81:35:FF:C2:58:3C:3A:43:B0:53:A1:61:CA:86:98:62:96:1A:B8:53:4F:44:C7:5F:D5:7D:97
-```
